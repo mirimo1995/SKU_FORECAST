@@ -40,6 +40,8 @@ The preprocessing steps include filter
   - Xgboost on raw data: This performs better than the benchmark but we suffer from overfitting and long training time because of the scarcity of the data
   - Xgboost on sampled data: We sample from the data that hasn't been sold over the last month.This performs better and suffer less from overfitting but we observe too much noise in the prediction as xgboost treats every date as an independent from others
   - Xgboost on sampled data and smoothing: We apply exponential moving average smoothing, this doesn't improve the metrics but allow the product to better suit the logic of the business
+### comparaison of performance
+![ml_flow.png](ml_flow.png)
 ### explainability:
 - We use shap values to help us understand the impact of the different features
 ### final model
