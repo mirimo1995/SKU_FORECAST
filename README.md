@@ -16,11 +16,9 @@ In the EDA notebook, we try to do a full understanding of the data to get a bett
 - The goal of our model is to help the optimization of our inventory planning so we want to build an algorithm that is capable to predict at any point of time the sum of the product that we are going to sell over the coming **LEAD_TIME** period
 - Compared to other SKUs forecasting problem with fixed number of SKUs, we find ourself facing a growing business with changing number of SKUs so we have to build a model adapted to that need
 ## Preprocessing Summary
-The preprocessing file is preprocess.py.
+The preprocessing file is in scripts/preprocess.py
 To preprocess the data, run the following command:
-```sh
-python preprocess.py
-```
+
 The preprocessing includes 3 main steps:
 - **Filtering**: Data before 2017 was excluded due to anomalies from store closures. SKUs with fewer than 30 total appearances over the last 2 years were filtered out.
 The preprocessing steps include filter
@@ -45,14 +43,25 @@ The preprocessing steps include filter
 ### explainability:
 - We use shap values to help us understand the impact of the different features
 ### final model
-  - We use the Xgboost on sampled data and smoothing and implement it in train.py
+  - We use the Xgboost on sampled data  and implement it in scripts/train.py
 To execute the training, run the following command
-```sh
-python train.py
-```
+
 
 # Potential improvements
 - One main improvement depends on the comprehension of the problem, this is related to the business and how do they intend to use the model, this can help us improve major choices in our modelling approach as the choice of the target variable, the choice of SKUs to focus on, and the choice of the loss function of the model.
 - The whole approach suppose that all SKUs are equal, in real life SKUs has different prices and different impact on business
 - All our approach is based on time features and global performance of the store, We can this of clustering the SKUs into different categories and use this to better predict sales, we can think of including other datasets that could impact the sales based on external or internal factors of the business
 - We overlooked approaches based on deep learning as lstm or calculating the correlation matrixes between SKUs as both of these method requires a fixed number of SKUs and recreating the model each time the business sells a new type of item, the xgboost based only a temporal features offer us flexibility on this side.
+- In the training, we consider a batch of selected hyperparameters, we could think of automating the hyperparameters optimization to fit with new data
+
+# Exectuion
+In the terminal, you can execute :
+```sh
+sh program.sh
+```
+which will:
+- create a virtual environment
+- install the requirements
+- execute the preprocessing and save the output in the path that you choose
+- execute the training and save the model as well as the metrics
+PS: Add the data to the repo or change the path in the sh file
