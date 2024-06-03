@@ -1,4 +1,4 @@
-# SKU Sales Data Analysis and Preprocessing
+# SKU Sales Forecasting
 
 ## Introduction
 This project focuses on analyzing and forecasting the sales of different Stock Keeping Units (SKUs) over time. With a diverse range of SKUs sold on different dates, our goal is to predict the quantity that will be sold over a given period (lead time) for each SKU.
